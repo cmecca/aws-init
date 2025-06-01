@@ -164,7 +164,7 @@ func main() {
 //
 // Exits with code 0 on success, or logs fatal error and exits with code 1 on failure.
 func healthCheck() {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), healthCheckTimeout)
 	defer cancel()
 
 	cfg, err := config.LoadDefaultConfig(ctx)
