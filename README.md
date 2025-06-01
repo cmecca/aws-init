@@ -3,11 +3,11 @@
 A lightweight init process for containers that securely resolves AWS Secrets Manager and AWS SSM Parameter Store values
 at runtime.
 
-Full documentation: [pkg.go.dev/moonlab.org/aws-init](https://pkg.go.dev/moonlab.org/aws-init)
+Full documentation: [pkg.go.dev/cmecca.io/aws-init](https://pkg.go.dev/cmecca.io/aws-init)
 
 ## Installation
 ```shell
-go get moonlab.org/aws-init@latest
+go get cmecca.io/aws-init@latest
 ```
 ## Usage
 ```shell

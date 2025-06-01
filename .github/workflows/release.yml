@@ -175,7 +175,7 @@ jobs:
             ## Install
             
             ```bash
-            go install moonlab.org/aws-init@${{ steps.version.outputs.VERSION }}
+            go install cmecca.io/aws-init@${{ steps.version.outputs.VERSION }}
             ```
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
