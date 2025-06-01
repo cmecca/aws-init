@@ -29,9 +29,9 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: ${{ runner.os }}-go-1.23-release-${{ hashFiles('**/go.sum') }}
+          key: ${{ runner.os }}-go-1.23-release-v2-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            ${{ runner.os }}-go-1.23-
+            ${{ runner.os }}-go-1.23-release-v2-
 
       - name: Run tests
         run: go test -v ./...
@@ -62,24 +62,25 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: ${{ runner.os }}-go-1.23-release-${{ hashFiles('**/go.sum') }}
+          key: ${{ runner.os }}-go-1.23-release-v2-${{ hashFiles('**/go.sum') }}
           restore-keys: |
-            ${{ runner.os }}-go-1.23-
+            ${{ runner.os }}-go-1.23-release-v2-
 
       - name: Build release binaries
         env:
           VERSION: ${{ steps.version.outputs.VERSION }}
         run: |
-          # Linux
+          # Linux amd64
           GOOS=linux GOARCH=amd64 go build -ldflags="-s -w -X main.version=${VERSION}" -o aws-init-linux-amd64 .
+          
+          # Linux arm64  
           GOOS=linux GOARCH=arm64 go build -ldflags="-s -w -X main.version=${VERSION}" -o aws-init-linux-arm64 .
           
-          # Darwin
+          # Darwin amd64
           GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w -X main.version=${VERSION}" -o aws-init-darwin-amd64 .
-          GOOS=darwin GOARCH=arm64 go build -ldflags="-s -w -X main.version=${VERSION}" -o aws-init-darwin-arm64 .
           
-          # Windows
-          GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X main.version=${VERSION}" -o aws-init-windows-amd64.exe .
+          # Darwin arm64
+          GOOS=darwin GOARCH=arm64 go build -ldflags="-s -w -X main.version=${VERSION}" -o aws-init-darwin-arm64 .
 
       - name: Create checksums
         run: |
