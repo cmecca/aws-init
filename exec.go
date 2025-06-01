@@ -1,4 +1,3 @@
-//go:build !windows
 // Package main provides process execution and signal handling functionality.
 //
 // This file contains functions for executing child processes with proper
