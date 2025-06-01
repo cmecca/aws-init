@@ -1,4 +1,4 @@
-module github.com/cmecca/aws-init
+module moonlab.org/aws-init
 
 go 1.23
 
